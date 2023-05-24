@@ -1,7 +1,9 @@
 import sqlite3
 try:
-    mpDbConn = sqlite3.connect('players.db')
-    spDbConn = sqlite3.connect('1players.db')
+    singleplayer = input("insert the name of the singleplayer world")
+    multiplayer = input("insert the name of the multiplayer world")
+    mpDbConn = sqlite3.connect(multiplayer)
+    spDbConn = sqlite3.connect(singleplayer)
     mpCur = mpDbConn.cursor()
     spCur = spDbConn.cursor()
 except Exception as err:
