@@ -1,7 +1,7 @@
 import sqlite3
 try:
-    singleplayer = input("insert the name of the singleplayer world")
-    multiplayer = input("insert the name of the multiplayer world")
+    singleplayer = input("insert the name of the singleplayer database (.db) file")
+    multiplayer = input("insert the name of the multiplayer database (.db) file")
     mpDbConn = sqlite3.connect(multiplayer)
     spDbConn = sqlite3.connect(singleplayer)
     mpCur = mpDbConn.cursor()
