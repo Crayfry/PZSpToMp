@@ -10,13 +10,15 @@ except Exception as err:
     print("something went wrong with database connections " + str(err))
 try:
     characterNum = input("Type the character id")
-    spCur.execute("""SELECT x, y, data from localPlayers WHERE id=?""", [characterNum])
+    spCur.execute("""SELECT name, x, y, z, data from localPlayers WHERE id=?""", [characterNum])
     resultList = spCur.fetchall()
-    xCoor = resultList[0][0]
-    yCoor = resultList[0][1]
-    data = resultList[0][2]
+    name = resultList[0][0]
+    xCoor = resultList[0][1]
+    yCoor = resultList[0][2]
+    zCoor = resultList[0][3]
+    data = resultList[0][4]
     userName = input("Type your user name")
-    mpCur.execute("""UPDATE networkPlayers SET x=?, y=?, data=? WHERE username=?""", [xCoor,yCoor,data,userName])
+    mpCur.execute("""UPDATE networkPlayers SET name=?, x=?, y=?, z=?, data=? WHERE username=?""", [name,xCoor,yCoor,zCoor,data,userName])
     mpDbConn.commit()
 except Exception as err:
     print("something went wrong with data manipulation " + str(err))
